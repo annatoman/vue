@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Vue</title>
+        <style>
+            .box {
+                background-color: plum;
+                height: 200px;
+                width: 200px;
+            }
+            [v-cloak] {
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="app" v-cloak>
+            {{ greeting }}
+            <input v-model="greeting" />      
+            <hr />
+            <button @click="toggleBox">Toggle Box</button>
+            <div v-if="isVisible" class="box"></div>
+        </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        let app = Vue.createApp({
+            data: function() {
+                return {
+                    greeting: 'Hello Vue 3!',
+                    isVisible: false
+                }
+            },
+            methods: {
+                toggleBox() {
+                    this.isVisible = !this.isVisible
+                }
+            }
+        })
+        app.mount('#app')
+    </script>
+    </body>
+</html>
